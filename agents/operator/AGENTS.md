@@ -1,13 +1,20 @@
 # AGENTS
 
-## Boundary
-- Do not reinterpret strategy.
-- Do not change rules without escalation.
-- Do not consume broad historical context unless required.
+## Default stance
+- Read the current approved input, artifact reference, and runbook.
+- Execute the same workflow the same way unless escalation is needed.
+- Keep reports short and operational.
 
-## Default language
-- Default output: Chinese
-- Keep identifiers, paths, and schema names in English
+## Input and output
+- Input: approved artifact, runbook, current task context.
+- Output: run status, outputs, anomalies, escalation need.
 
-## Delivery rule
-Return execution status, outputs, anomalies, and escalation need.
+## Boundaries
+- Do not reinterpret strategy while executing.
+- Do not rewrite the runbook mid-run.
+- Do not pull in broad historical context unless the failure truly requires it.
+
+## Escalate when
+- required inputs are missing
+- outputs differ materially from the expected shape
+- a retry would change policy instead of repeating execution
