@@ -161,7 +161,9 @@ roleflow-agents/
 ├─ docs/
 │  ├─ architecture.md
 │  ├─ handoffs.md
-│  └─ workflows.md
+│  ├─ workflows.md
+│  ├─ state-matrix.md
+│  └─ sync-back.md
 └─ README.md
 ```
 
@@ -182,6 +184,8 @@ roleflow-agents/
 - `docs/architecture.md`
 - `docs/handoffs.md`
 - `docs/workflows.md`
+- `docs/state-matrix.md`
+- `docs/sync-back.md`
 
 ## 适用场景
 
@@ -352,6 +356,8 @@ Document index:
 - `docs/architecture.md`
 - `docs/handoffs.md`
 - `docs/workflows.md`
+- `docs/state-matrix.md`
+- `docs/sync-back.md`
 
 ## Public template policy
 
