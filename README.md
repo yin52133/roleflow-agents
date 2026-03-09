@@ -2,7 +2,7 @@
 
 中文说明（当前） | [English section](#english)
 
-RoleFlow Agents 是一套面向长期运行 AI 系统的 multi-agent workflow 设计。它不是靠“多几个 agent”来解决问题，而是靠一组明确的结构取舍，去解决更常见的失败模式：**角色串味、上下文膨胀、memory 污染，以及草稿直接滑进 daily 执行**。
+RoleFlow Agents 是一套 multi-agent workflow 设计。它既支持**周期执行型 workflow**，也支持**一次性拆分型 workflow**。它不是靠“多几个 agent”来解决问题，而是靠一组明确的结构取舍，去解决更常见的失败模式：**角色串味、上下文膨胀、memory 污染，以及草稿直接滑进 daily 执行**。
 
 > Source note: inspired by practical OpenClaw multi-agent experiments and generalized into a public, privacy-safe template.
 
@@ -153,7 +153,8 @@ roleflow-agents/
 │  ├─ builder-core/
 │  └─ operator-core/
 ├─ workflows/
-│  └─ 0001-example.yaml
+│  ├─ 0001-example.yaml
+│  └─ 0002-presentation-task.yaml
 ├─ runtime/
 │  └─ workflow-runs/
 │     └─ wf-0001/
@@ -165,7 +166,7 @@ roleflow-agents/
 ```
 
 
-`workflows/` stores durable workflow registry files used by the orchestrator. `0001-example.yaml` is a public example that shows a managed workflow object with daily expectations, guards, retry rules, and fallback policy.
+`workflows/` stores durable workflow registry files used by the orchestrator. `0001-example.yaml` shows an operational daily workflow, while `0002-presentation-task.yaml` shows a one-off task workflow.
 
 `runtime/workflow-runs/` stores fast-changing execution state and history. It is separate from approved workflow definitions, and can include both successful and failed example runs.
 
@@ -187,6 +188,7 @@ roleflow-agents/
 - 需要一个主 agent 编排多个专家 agent
 - 需要控制上下文污染和 memory 边界
 - 需要把“试跑成功”升级成“可 daily 执行”
+- 需要拆分一次性任务，例如报告、研究、PPT、方案类工作
 - 需要 public-friendly 的角色模板，而不是私人 deployment 配置
 
 ## 注意
@@ -202,7 +204,7 @@ roleflow-agents/
 
 # English
 
-RoleFlow Agents is a multi-agent workflow design for long-running AI systems. It does not try to solve coordination problems by simply adding more agents. Instead, it makes a few explicit structural choices to reduce common failure modes: **role drift, context pollution, memory bloat, and drafts slipping into repeated execution**.
+RoleFlow Agents is a multi-agent workflow design that supports both **repeatable operational workflows** and **one-off task workflows**. It does not try to solve coordination problems by simply adding more agents. Instead, it makes a few explicit structural choices to reduce common failure modes: **role drift, context pollution, memory bloat, and drafts slipping into repeated execution**.
 
 > Source note: inspired by practical OpenClaw multi-agent experiments and generalized into a public, privacy-safe template.
 

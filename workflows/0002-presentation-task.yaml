@@ -1,0 +1,24 @@
+workflow_id: wf-0002
+workflow_kind: task
+slug: ai-architecture-presentation
+name: AI Architecture Presentation Task
+purpose: Produce a one-off presentation deck about multi-agent architecture for a specific audience
+role_sequence:
+  - builder
+  - analyst
+  - builder
+workflow_state: in_progress
+current_mode: task_execution
+approved_artifacts:
+  source_notes: artifacts/presentation/source-notes.md
+approved_analysis_template: templates/presentation-key-points.md
+approved_runbook: null
+lifecycle_intent: create
+origin:
+  type: created
+  parent_workflow_id: null
+  reason: one-off presentation request
+notes:
+  - This is a one-off task workflow, not an operational daily workflow.
+  - Analyst helps refine key points and audience fit, but does not own final delivery routing.
+  - Completion should usually end in completed, blocked, or archived instead of approved_daily.

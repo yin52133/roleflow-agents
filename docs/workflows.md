@@ -5,15 +5,41 @@
 RoleFlow Agents treats workflows as durable managed objects, not as loose chat history.
 
 The registry gives the orchestrator a stable basis for:
-- selecting `first_run` vs `daily`
+- selecting the right workflow family and mode
 - deciding whether to repair, revise, derive, create, or retire a workflow
 - understanding which roles belong to the workflow
 - knowing which runbook, artifacts, and analysis template are currently approved
+
+## Workflow families
+
+RoleFlow Agents supports two broad workflow families.
+
+### operational
+Use for repeatable workflows with approved runbooks, daily mode, runtime supervision, and reliability fields.
+
+Typical examples:
+- daily reports
+- scheduled data pulls
+- recurring analysis
+- routine execution
+
+### task
+Use for one-off multi-step work that still benefits from orchestration and specialist handoffs, but does not need daily lifecycle management.
+
+Typical examples:
+- presentations
+- research tasks
+- one-off reports
+- planning and proposal work
+
+Operational workflows usually need `first_run` and `daily`.
+Task workflows usually need a lighter one-off execution path and a final archive state.
 
 ## Minimal schema
 
 ```yaml
 workflow_id: wf-0001
+workflow_kind: operational | task
 slug: macro-daily
 name: Macro Daily Analysis
 purpose: Produce a daily macro report from approved data sources
@@ -220,3 +246,16 @@ runtime/workflow-runs/wf-0001/history/2026-03-10T09-00-00-timeout.json
 ```
 
 This makes failure handling visible instead of leaving it as an implied behavior.
+
+
+## Task workflow notes
+
+Task workflows are still real workflows, but they are not automatically aiming for `approved_daily`.
+
+A task workflow usually:
+- has a clear goal
+- may still use multiple roles
+- still benefits from structured handoffs and orchestrator review
+- usually ends in `completed`, `blocked`, or `archived` rather than `approved_daily`
+
+This keeps one-off work compatible with the same orchestration model without forcing it into an operational daily shape.

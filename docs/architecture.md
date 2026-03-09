@@ -6,6 +6,8 @@ Design a multi-agent system where the orchestrator stays thin, experts stay focu
 
 This architecture is not built around “more agents.” It is built around a few deliberate constraints that reduce role drift, context pollution, and memory bloat.
 
+RoleFlow Agents supports both repeatable operational workflows and one-off task workflows. Daily mode is only one branch of the overall model, not the whole model.
+
 ## Core trade-offs
 
 RoleFlow Agents makes four explicit trade-offs:
