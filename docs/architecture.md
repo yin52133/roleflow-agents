@@ -102,6 +102,48 @@ then it stops being a routing layer and becomes a second generalist. That increa
 
 This is the main mechanism behind low-memory orchestration.
 
+
+## Workflow registry and mode selection
+
+The orchestrator should not decide only from live conversation context. It should also maintain a workflow registry.
+
+Each workflow should have a durable record of:
+
+- `workflow_id`
+- `slug`
+- `name`
+- `purpose`
+- `role_sequence`
+- `workflow_state`
+- `current_mode`
+- approved artifact references
+- approved runbook reference
+- lifecycle intent
+
+Recommended file naming:
+
+- `0001-macro-daily.yaml`
+- `0002-market-brief.yaml`
+
+Recommended internal identity:
+
+- `wf-0001`
+- `wf-0002`
+
+This separation keeps file ordering human-readable while keeping workflow identity stable for rules and references.
+
+## Workflow lifecycle actions
+
+The orchestrator should classify incoming requests into one of these actions:
+
+- `repair` — the workflow design is still correct, but execution is broken
+- `revise` — the workflow remains the same workflow, but approved logic or assets must change
+- `derive` — create a new workflow from an existing one when the parent is similar but no longer identical
+- `create` — start a new workflow with no suitable parent
+- `retire` — stop using a workflow as an active path
+
+`derive` matters because many real requests are not cleanly “new” or “edit current”. They are best modeled as a new branch with a parent reference.
+
 ## First-run review model
 
 A workflow that worked once is not automatically safe to repeat.

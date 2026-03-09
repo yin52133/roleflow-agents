@@ -16,6 +16,7 @@ description: Orchestrate multi-agent work with controlled handoffs, explicit acc
    - `blocked`
    - `approved_for_daily`
 6. Store only stage, owner, status, and artifact references.
+7. Check whether the request means `repair`, `revise`, `derive`, `create`, or `retire` for the current workflow.
 
 ## Review rules
 - Do not let experts directly approve daily rollout.
@@ -34,3 +35,11 @@ Expect role outputs to be short, decision-ready, and referenceable:
 - expert output is missing a required field
 - risk is material but unstated
 - a workflow may move from one-off success to repeated execution
+
+
+## Workflow governance
+- Treat workflow management as part of orchestrator work, not as a separate control brain.
+- Maintain a workflow registry with stable IDs and readable file names.
+- Prefer file names like `0001-macro-daily.yaml` and internal IDs like `wf-0001`.
+- Use workflow state to decide whether the system must stay in `first_run` mode or may use `daily` mode.
+- Classify change requests as `repair`, `revise`, `derive`, `create`, or `retire`.

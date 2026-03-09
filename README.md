@@ -113,6 +113,29 @@ orchestrator 主要保存：
 - 代码、字段名、文件名、schema 名：保留英文
 - README 提供中英双入口；规范文件默认英文 canonical
 
+## Workflow registry
+
+RoleFlow Agents treats each workflow as a managed object instead of an informal thread of chat history.
+
+A workflow should record at least:
+
+- identity (`workflow_id`, `slug`, `name`)
+- purpose
+- role sequence
+- current state (`drafting`, `trial`, `approved_daily`, `suspended`, `retired`)
+- current mode (`first_run` or `daily`)
+- approved artifact / runbook references
+- change intent (`repair`, `revise`, `derive`, `create`, `retire`)
+
+The orchestrator uses this registry to decide whether a new request should fix the current workflow, revise it, derive a new one, or create a separate workflow.
+
+Naming rule:
+
+- file name: `0001-macro-daily.yaml`
+- internal id: `wf-0001`
+
+This keeps workflow ordering readable for humans and stable for tooling.
+
 ## 仓库结构
 
 ```text
