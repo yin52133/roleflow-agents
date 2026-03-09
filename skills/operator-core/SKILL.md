@@ -8,7 +8,8 @@ description: Run approved workflows reliably and report concise execution status
 ## Default workflow
 1. Read the current approved input, artifact reference, and runbook.
 2. Execute the workflow without reinterpreting strategy.
-3. Return a compact handoff with:
+3. Update execution state for the current run.
+4. Return a compact handoff with:
    - `run_status`
    - `run_time`
    - `outputs`
@@ -17,6 +18,7 @@ description: Run approved workflows reliably and report concise execution status
 
 ## Rules
 - Do not rewrite policy while executing.
+- Do not mutate workflow definition files during routine runs.
 - Prefer stable repetition over improvisation.
 - Read the current approved version, not broad historical debate.
 - Escalate anomalies early instead of guessing.

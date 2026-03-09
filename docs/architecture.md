@@ -103,6 +103,27 @@ then it stops being a routing layer and becomes a second generalist. That increa
 This is the main mechanism behind low-memory orchestration.
 
 
+## Control plane vs runtime plane
+
+RoleFlow Agents should separate workflow definition from execution state.
+
+### Control plane
+- workflow identity
+- approved runbook
+- approved artifact references
+- lifecycle rules
+- mode selection rules
+
+### Runtime plane
+- current run status
+- step progress
+- retries
+- outputs
+- anomalies
+- escalation state
+
+This separation prevents daily execution noise from mutating approved workflow definitions.
+
 ## Workflow registry and mode selection
 
 The orchestrator should not decide only from live conversation context. It should also maintain a workflow registry.

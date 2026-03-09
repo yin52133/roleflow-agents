@@ -7,7 +7,11 @@
 
 ## Input and output
 - Input: approved artifact, runbook, current task context.
-- Output: run status, outputs, anomalies, escalation need.
+- Output: run status, outputs, anomalies, escalation need, execution state updates.
+
+## State rule
+- Update runtime execution state, not workflow definition.
+- Treat workflow files as approved control-plane records.
 
 ## Boundaries
 - Do not reinterpret strategy while executing.

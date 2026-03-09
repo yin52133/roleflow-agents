@@ -99,3 +99,70 @@ Daily mode should fall back to review-heavy mode when guards fail, for example:
 - validation is no longer reliable
 - analysis logic no longer fits the approved workflow
 - operator output no longer matches the approved runbook
+
+
+## Control plane vs runtime plane
+
+A workflow definition file is not the same thing as daily execution state.
+
+### Control plane (`workflows/*.yaml`)
+Use workflow files for slow-changing, approved definitions:
+- workflow identity
+- purpose
+- role sequence
+- workflow state
+- approved runbooks and artifact references
+- guard, retry, and escalation policy
+
+These files should change only when the workflow itself changes.
+
+### Runtime plane (`runtime/workflow-runs/...`)
+Use runtime run records for fast-changing execution state:
+- current run status
+- current stage
+- timestamps
+- retries
+- outputs
+- anomalies
+- escalation state
+
+This is where the operator should write.
+
+## Operator rule
+
+The operator updates execution state, not workflow definition.
+
+That means:
+- operator may update run records
+- operator may report outputs and anomalies
+- operator should not rewrite workflow identity, approved runbooks, or lifecycle policy during routine execution
+
+## Suggested layout
+
+```text
+workflows/
+  0001-macro-daily.yaml
+runtime/
+  workflow-runs/
+    wf-0001/
+      latest.json
+      history/
+        2026-03-09T09-00-00.json
+```
+
+## Runtime state example fields
+
+```yaml
+run_id: run-20260309-0900
+workflow_id: wf-0001
+status: running | completed | failed | timed_out
+current_stage: builder | analyst | operator
+started_at: <timestamp>
+last_progress_at: <timestamp>
+retry_count: 0
+outputs:
+  - <artifact-or-link>
+anomalies:
+  - <point>
+need_escalation: false
+```

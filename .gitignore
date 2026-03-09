@@ -11,7 +11,15 @@
 *.lic
 
 # Runtime and caches
-runtime/
+runtime/*
+!runtime/workflow-runs/
+runtime/workflow-runs/*
+!runtime/workflow-runs/wf-0001/
+runtime/workflow-runs/wf-0001/*
+!runtime/workflow-runs/wf-0001/latest.json
+!runtime/workflow-runs/wf-0001/history/
+runtime/workflow-runs/wf-0001/history/*
+!runtime/workflow-runs/wf-0001/history/2026-03-09T09-00-00.json
 logs/
 .cache/
 .tmp/

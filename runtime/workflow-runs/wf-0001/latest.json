@@ -1,0 +1,14 @@
+{
+  "run_id": "run-20260309-0900",
+  "workflow_id": "wf-0001",
+  "status": "completed",
+  "current_stage": "operator",
+  "started_at": "2026-03-09T09:00:00Z",
+  "last_progress_at": "2026-03-09T09:08:00Z",
+  "retry_count": 0,
+  "outputs": [
+    "reports/macro/2026-03-09.md"
+  ],
+  "anomalies": [],
+  "need_escalation": false
+}
