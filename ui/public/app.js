@@ -76,10 +76,10 @@ const i18n = {
 };
 
 const roleAvatars = {
-  orchestrator: '🕹️',
-  analyst: '📊',
-  builder: '🛠️',
-  operator: '⚙️'
+  orchestrator: '/avatars/orchestrator.svg',
+  analyst: '/avatars/analyst.svg',
+  builder: '/avatars/builder.svg',
+  operator: '/avatars/operator.svg'
 };
 
 let lang = 'zh';
@@ -140,7 +140,7 @@ function renderSummary() {
   roles.forEach((role) => {
     const card = el('div', 'role-card');
     card.innerHTML = `
-      <div class="pixel-avatar ${role.id}">${roleAvatars[role.id] || '◼'}</div>
+      <div class="pixel-avatar ${role.id}"><img src="${roleAvatars[role.id]}" alt="${role.id}" /></div>
       <div>
         <strong>${role.id}</strong>
         <div class="muted">${t('roleDesc')[role.id] || ''}</div>

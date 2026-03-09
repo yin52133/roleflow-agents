@@ -86,7 +86,13 @@ body {
   place-items: center;
   background: rgba(255,255,255,.03);
   box-shadow: inset 0 0 0 1px rgba(255,255,255,.02);
-  font-size: 28px;
+  overflow: hidden;
+}
+.pixel-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  image-rendering: pixelated;
 }
 .pixel-avatar.orchestrator { box-shadow: inset 0 0 0 1px rgba(137,167,255,.18), 0 0 18px rgba(137,167,255,.18); }
 .pixel-avatar.analyst { box-shadow: inset 0 0 0 1px rgba(123,224,255,.18), 0 0 18px rgba(123,224,255,.15); }
