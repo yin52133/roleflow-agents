@@ -31,8 +31,23 @@
           <div class="card">
             <div class="section-row">
               <div class="section-title" id="workflow-title"></div>
-              <div class="muted" id="workflow-count"></div>
+              <div class="toolbar compact-toolbar">
+                <select id="kind-filter" class="filter-select">
+                  <option value="all">all</option>
+                  <option value="operational">operational</option>
+                  <option value="task">task</option>
+                </select>
+                <select id="state-filter" class="filter-select">
+                  <option value="all">all states</option>
+                  <option value="approved_daily">approved_daily</option>
+                  <option value="in_progress">in_progress</option>
+                  <option value="suspended">suspended</option>
+                </select>
+                <button class="lang-btn active" id="view-card" type="button">Cards</button>
+                <button class="lang-btn" id="view-compact" type="button">Compact</button>
+              </div>
             </div>
+            <div class="muted" id="workflow-count"></div>
             <div id="workflow-list" class="workflow-grid"></div>
           </div>
 
