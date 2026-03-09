@@ -158,9 +158,14 @@ roleflow-agents/
 │  └─ workflow-runs/
 │     └─ wf-0001/
 ├─ docs/
-│  ├─ architecture.md
-│  ├─ handoffs.md
-│  └─ workflows.md
+│  ├─ en/
+│  │  ├─ architecture.md
+│  │  ├─ handoffs.md
+│  │  └─ workflows.md
+│  └─ zh/
+│     ├─ architecture.md
+│     ├─ handoffs.md
+│     └─ workflows.md
 └─ README.md
 ```
 
@@ -168,6 +173,8 @@ roleflow-agents/
 `workflows/` stores durable workflow registry files used by the orchestrator. `0001-example.yaml` is a public example that shows the minimal structure of a managed workflow object.
 
 `runtime/workflow-runs/` stores fast-changing execution state and history. It is separate from approved workflow definitions.
+
+`docs/en/` keeps the canonical English docs. `docs/zh/` provides a Chinese explanation layer for easier design discussion and review.
 
 ## 适用场景
 
