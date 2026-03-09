@@ -150,11 +150,17 @@ roleflow-agents/
 │  ├─ analyst-core/
 │  ├─ builder-core/
 │  └─ operator-core/
+├─ workflows/
+│  └─ 0001-example.yaml
 ├─ docs/
 │  ├─ architecture.md
-│  └─ handoffs.md
+│  ├─ handoffs.md
+│  └─ workflows.md
 └─ README.md
 ```
+
+
+`workflows/` stores durable workflow registry files used by the orchestrator. `0001-example.yaml` is a public example that shows the minimal structure of a managed workflow object.
 
 ## 适用场景
 

@@ -1,0 +1,22 @@
+workflow_id: wf-0001
+slug: macro-daily-example
+name: Macro Daily Example
+purpose: Produce a daily macro analysis report from approved data inputs
+role_sequence:
+  - builder
+  - analyst
+  - operator
+workflow_state: approved_daily
+current_mode: daily
+approved_artifacts:
+  data_source: artifacts/macro/latest.json
+  analysis_template: templates/macro-daily-report.md
+approved_runbook: runbooks/macro-daily-v1.md
+lifecycle_intent: revise
+origin:
+  type: created
+  parent_workflow_id: null
+  reason: initial public example workflow
+notes:
+  - Builder may pass the validated dataset directly to Analyst.
+  - Decision changes still re-center through the orchestrator.
