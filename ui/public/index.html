@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RoleFlow Viewer</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div id="app">
+      <header class="topbar">
+        <div>
+          <div class="pixel-title">ROLEFLOW VIEWER</div>
+          <div class="subtitle" id="subtitle"></div>
+        </div>
+        <div class="toolbar">
+          <button class="lang-btn active" data-lang="zh">中文</button>
+          <button class="lang-btn" data-lang="en">EN</button>
+        </div>
+      </header>
+
+      <main class="layout">
+        <aside class="sidebar card">
+          <div class="section-title" id="sidebar-title"></div>
+          <div id="summary-cards" class="stack"></div>
+          <div class="section-title" id="roles-title"></div>
+          <div id="role-list" class="stack"></div>
+        </aside>
+
+        <section class="content">
+          <div class="card">
+            <div class="section-row">
+              <div class="section-title" id="workflow-title"></div>
+              <div class="muted" id="workflow-count"></div>
+            </div>
+            <div id="workflow-list" class="workflow-grid"></div>
+          </div>
+
+          <div class="card details-card">
+            <div class="section-row">
+              <div class="section-title" id="detail-title"></div>
+              <div class="muted" id="detail-hint"></div>
+            </div>
+            <div id="detail-panel" class="detail-panel"></div>
+          </div>
+        </section>
+      </main>
+    </div>
+    <script type="module" src="/app.js"></script>
+  </body>
+</html>

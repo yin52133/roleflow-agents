@@ -1,0 +1,13 @@
+{
+  "name": "roleflow-ui",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "start": "node server.mjs",
+    "dev": "node server.mjs"
+  },
+  "dependencies": {
+    "yaml": "^2.5.1"
+  }
+}
