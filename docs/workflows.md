@@ -166,3 +166,37 @@ anomalies:
   - <point>
 need_escalation: false
 ```
+
+
+## Daily reliability fields
+
+A daily workflow usually needs more than identity and lifecycle metadata. It also needs a small reliability layer.
+
+Recommended fields:
+
+```yaml
+daily_expectations:
+  deadline: '09:30'
+  max_step_delay_minutes: 20
+  max_retries_per_step: 2
+  escalation_target: orchestrator
+
+guards:
+  input:
+    - validated data artifact exists
+    - required fields match approved schema
+  analysis:
+    - analyst output includes required decision fields
+  execution:
+    - operator output matches approved runbook shape
+
+fallback_policy:
+  on_builder_failure:
+    action: retry_then_suspend
+  on_analyst_timeout:
+    action: retry_then_escalate
+  on_operator_anomaly:
+    action: escalate_and_hold
+```
+
+These fields do not guarantee success by themselves. They define how the orchestrator should react when a daily workflow slows down, fails validation, or drifts away from the approved path.

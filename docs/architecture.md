@@ -243,3 +243,16 @@ The orchestrator applies the gate. Experts do not self-approve production rollou
 - Default user-facing language: Chinese
 - Switch when explicitly requested
 - Keep technical identifiers in English
+
+
+## Guards, retries, and escalation
+
+Guards do not "complete the work" on behalf of the system. They decide whether a workflow may continue safely.
+
+A reliable daily workflow usually needs three separate mechanisms:
+
+- **guards**: determine whether the current step may continue
+- **retry policy**: define how many times a step may be retried and under what timing rules
+- **escalation policy**: define when the orchestrator must intervene, suspend, reroute, or notify a human
+
+In RoleFlow Agents, the operator executes the run, while the orchestrator remains responsible for supervising stalled steps, retries, and fallback decisions.

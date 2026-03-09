@@ -17,6 +17,42 @@ origin:
   type: created
   parent_workflow_id: null
   reason: initial public example workflow
+
+daily_expectations:
+  deadline: '09:30'
+  max_step_delay_minutes: 20
+  max_retries_per_step: 2
+  escalation_target: orchestrator
+
+guards:
+  input:
+    - validated data artifact exists
+    - required fields match approved schema
+  analysis:
+    - analyst output includes summary, confidence, and recommendation
+    - recommendation does not bypass orchestrator approval
+  execution:
+    - operator output matches approved runbook shape
+    - anomalies are reported explicitly
+
+fallback_policy:
+  on_builder_failure:
+    action: retry_then_suspend
+    notes:
+      - retry builder up to max_retries_per_step
+      - if no valid artifact is produced, suspend daily mode and return to review-heavy flow
+  on_analyst_timeout:
+    action: retry_then_escalate
+    notes:
+      - retry analyst once within the daily window
+      - if still blocked, escalate to orchestrator for reroute or pause
+  on_operator_anomaly:
+    action: escalate_and_hold
+    notes:
+      - do not silently continue if runbook output shape changes
+      - keep current workflow state visible to orchestrator
+
 notes:
   - Builder may pass the validated dataset directly to Analyst.
   - Decision changes still re-center through the orchestrator.
+  - Daily mode is allowed only because workflow_state is approved_daily.

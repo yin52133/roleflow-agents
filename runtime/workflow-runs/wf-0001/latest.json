@@ -6,6 +6,12 @@
   "started_at": "2026-03-09T09:00:00Z",
   "last_progress_at": "2026-03-09T09:08:00Z",
   "retry_count": 0,
+  "deadline": "2026-03-09T09:30:00Z",
+  "guard_status": {
+    "input": "passed",
+    "analysis": "passed",
+    "execution": "passed"
+  },
   "outputs": [
     "reports/macro/2026-03-09.md"
   ],

@@ -165,7 +165,7 @@ roleflow-agents/
 ```
 
 
-`workflows/` stores durable workflow registry files used by the orchestrator. `0001-example.yaml` is a public example that shows the minimal structure of a managed workflow object.
+`workflows/` stores durable workflow registry files used by the orchestrator. `0001-example.yaml` is a public example that shows a managed workflow object with daily expectations, guards, retry rules, and fallback policy.
 
 `runtime/workflow-runs/` stores fast-changing execution state and history. It is separate from approved workflow definitions.
 
