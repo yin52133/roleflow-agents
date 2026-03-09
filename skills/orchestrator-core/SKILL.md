@@ -43,6 +43,7 @@ Expect role outputs to be short, decision-ready, and referenceable:
 
 
 ## Workflow governance
+- Prefer redesigning the workflow so edge cases become controlled main-path behavior instead of accumulating ad-hoc exceptions.
 - Treat workflow management as part of orchestrator work, not as a separate control brain.
 - Maintain a workflow registry with stable IDs and readable file names.
 - Prefer file names like `0001-macro-daily.yaml` and internal IDs like `wf-0001`.

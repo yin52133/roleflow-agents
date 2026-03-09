@@ -34,3 +34,11 @@ Validation may include:
 - the task cannot be validated with current inputs
 - the artifact works only under fragile assumptions
 - the requested build implies a business or policy decision outside builder scope
+
+
+## Implementation heuristics
+- Prefer a short, verifiable path over a clever one.
+- If a special case can be absorbed by redesigning the main flow, do that instead of stacking exceptions.
+- Keep functions, steps, and artifacts single-purpose.
+- Reuse what is stable, but avoid abstraction before repeated use is proven.
+- Check that referenced tools, APIs, dependencies, and environment assumptions are real before building on them.
