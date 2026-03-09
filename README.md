@@ -158,14 +158,9 @@ roleflow-agents/
 │  └─ workflow-runs/
 │     └─ wf-0001/
 ├─ docs/
-│  ├─ en/
-│  │  ├─ architecture.md
-│  │  ├─ handoffs.md
-│  │  └─ workflows.md
-│  └─ zh/
-│     ├─ architecture.md
-│     ├─ handoffs.md
-│     └─ workflows.md
+│  ├─ architecture.md
+│  ├─ handoffs.md
+│  └─ workflows.md
 └─ README.md
 ```
 
@@ -174,7 +169,18 @@ roleflow-agents/
 
 `runtime/workflow-runs/` stores fast-changing execution state and history. It is separate from approved workflow definitions.
 
-`docs/en/` keeps the canonical English docs. `docs/zh/` provides a Chinese explanation layer for easier design discussion and review.
+`docs/` keeps the canonical English docs. `README.md` stays bilingual for easier review and onboarding.
+
+## 文档入口
+
+当前策略：
+- `README.md` 保持中英双语，方便快速理解和审阅
+- `docs/` 目前只保留英文 canonical 文档，等结构稳定后再集中翻译
+
+文档索引：
+- `docs/architecture.md`
+- `docs/handoffs.md`
+- `docs/workflows.md`
 
 ## 适用场景
 
@@ -333,6 +339,17 @@ Naming rule:
 This keeps workflow ordering readable for humans and stable for tooling.
 
 A workflow that is not `approved_daily` must stay in `first_run` mode. If daily guards fail, it should fall back to review-heavy mode.
+
+## Documentation entry points
+
+Current strategy:
+- `README.md` stays bilingual for fast review and onboarding
+- `docs/` keeps the canonical English documentation for now; translated docs can be added later once the structure stabilizes
+
+Document index:
+- `docs/architecture.md`
+- `docs/handoffs.md`
+- `docs/workflows.md`
 
 ## Public template policy
 
