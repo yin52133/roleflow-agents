@@ -144,6 +144,17 @@ The orchestrator should classify incoming requests into one of these actions:
 
 `derive` matters because many real requests are not cleanly “new” or “edit current”. They are best modeled as a new branch with a parent reference.
 
+## Mode enforcement
+
+Mode selection is not descriptive only; it is controlled by workflow state.
+
+Recommended rule:
+- if `workflow_state != approved_daily`, use `first_run` mode
+- if `workflow_state == approved_daily`, use `daily` mode
+- if daily guards fail, switch to `suspended` and re-enter review-heavy flow
+
+This is what makes first-run and daily paths enforceable instead of aspirational.
+
 ## First-run review model
 
 A workflow that worked once is not automatically safe to repeat.
@@ -162,6 +173,7 @@ Use a small status gate:
 - `accepted`
 - `needs_revision`
 - `blocked`
+- `approved_for_trial`
 - `approved_for_daily`
 
 The orchestrator applies the gate. Experts do not self-approve production rollout.

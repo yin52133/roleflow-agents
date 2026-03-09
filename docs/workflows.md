@@ -81,3 +81,21 @@ Interpretation:
 - similar parent but distinct cadence/structure/purpose -> `derive`
 - no suitable parent -> `create`
 - no longer useful or safe -> `retire`
+
+
+## Mode enforcement
+
+Mode selection should come from workflow state, not from ad-hoc prompt wording.
+
+Recommended mapping:
+- `drafting` -> `first_run`
+- `trial` -> `first_run`
+- `approved_daily` -> `daily`
+- `suspended` -> `first_run`
+- `retired` -> no active execution path
+
+Daily mode should fall back to review-heavy mode when guards fail, for example:
+- input structure changed materially
+- validation is no longer reliable
+- analysis logic no longer fits the approved workflow
+- operator output no longer matches the approved runbook

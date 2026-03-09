@@ -18,6 +18,11 @@ description: Orchestrate multi-agent work with controlled handoffs, explicit acc
 6. Store only stage, owner, status, and artifact references.
 7. Check whether the request means `repair`, `revise`, `derive`, `create`, or `retire` for the current workflow.
 
+## Mode selection rules
+- If the workflow is not `approved_daily`, use `first_run` mode.
+- If the workflow is `approved_daily`, `daily` mode is allowed.
+- If daily guards fail, switch the workflow to `suspended` and return to review-heavy handling.
+
 ## Review rules
 - Do not let experts directly approve daily rollout.
 - Do not forward full expert transcripts by default.
@@ -42,4 +47,5 @@ Expect role outputs to be short, decision-ready, and referenceable:
 - Maintain a workflow registry with stable IDs and readable file names.
 - Prefer file names like `0001-macro-daily.yaml` and internal IDs like `wf-0001`.
 - Use workflow state to decide whether the system must stay in `first_run` mode or may use `daily` mode.
+- Treat daily guard failures as a state change, not as a casual note.
 - Classify change requests as `repair`, `revise`, `derive`, `create`, or `retire`.
