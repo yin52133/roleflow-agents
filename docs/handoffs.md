@@ -201,3 +201,15 @@ Daily mode should switch back into a heavier review path when:
 - keep handoffs shorter
 - focus on deltas, anomalies, and escalation
 - avoid rebuilding the workflow on every run
+
+
+## Analysis format stability
+
+The analysis format should usually be approved during first-run mode.
+
+That means:
+- first-run analysis helps define what fields and structure the workflow needs
+- daily analysis should follow that approved format instead of drifting every run
+- if the approved format stops fitting the real data, that should be treated as a workflow review signal
+
+This reduces format drift and makes daily outputs easier to compare over time.

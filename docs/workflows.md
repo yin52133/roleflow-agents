@@ -8,7 +8,7 @@ The registry gives the orchestrator a stable basis for:
 - selecting `first_run` vs `daily`
 - deciding whether to repair, revise, derive, create, or retire a workflow
 - understanding which roles belong to the workflow
-- knowing which runbook and artifacts are currently approved
+- knowing which runbook, artifacts, and analysis template are currently approved
 
 ## Minimal schema
 
@@ -25,7 +25,7 @@ workflow_state: drafting | trial | approved_daily | suspended | retired
 current_mode: first_run | daily
 approved_artifacts:
   data_source: artifacts/macro/latest.json
-  analysis_template: templates/macro-report-v1.md
+approved_analysis_template: templates/macro-report-v1.md
 approved_runbook: runbooks/macro-daily-v1.md
 lifecycle_intent: repair | revise | derive | create | retire
 origin:

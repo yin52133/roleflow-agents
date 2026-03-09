@@ -10,7 +10,7 @@ workflow_state: approved_daily
 current_mode: daily
 approved_artifacts:
   data_source: artifacts/macro/latest.json
-  analysis_template: templates/macro-daily-report.md
+approved_analysis_template: templates/macro-daily-report.md
 approved_runbook: runbooks/macro-daily-v1.md
 lifecycle_intent: revise
 origin:
@@ -29,6 +29,7 @@ guards:
     - validated data artifact exists
     - required fields match approved schema
   analysis:
+    - analyst output matches the approved analysis template
     - analyst output includes summary, confidence, and recommendation
     - recommendation does not bypass orchestrator approval
   execution:
@@ -55,4 +56,5 @@ fallback_policy:
 notes:
   - Builder may pass the validated dataset directly to Analyst.
   - Decision changes still re-center through the orchestrator.
+  - The approved analysis template was defined during first-run review and should stay stable during daily runs.
   - Daily mode is allowed only because workflow_state is approved_daily.
