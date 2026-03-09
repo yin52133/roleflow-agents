@@ -174,6 +174,10 @@ roleflow-agents/
 
 `docs/` keeps the canonical English docs. `README.md` stays bilingual for easier review and onboarding.
 
+## UI
+
+仓库内置本地只读 viewer，位于 `ui/`，用于查看角色、workflow、runtime success / failure 示例状态。默认本地运行在 `127.0.0.1:3210`。
+
 ## 文档入口
 
 当前策略：
@@ -345,6 +349,10 @@ Naming rule:
 This keeps workflow ordering readable for humans and stable for tooling.
 
 A workflow that is not `approved_daily` must stay in `first_run` mode. If daily guards fail, it should fall back to review-heavy mode.
+
+## UI
+
+The repository includes a local read-only viewer in `ui/` for inspecting roles, workflows, and runtime success / failure examples. It is intended for local use on `127.0.0.1:3210`.
 
 ## Documentation entry points
 

@@ -54,3 +54,18 @@ Only sync back when the answer is strongly yes.
 
 - **Patterns go upstream.**
 - **Instances stay local.**
+
+
+## Documentation translation policy
+
+During active development, keep only the English docs in `docs/` as the canonical source.
+
+Release-time rule:
+- English docs are the source of truth.
+- Chinese docs are generated or updated as a release-synced translation set.
+- `docs/zh` should always be derived from `docs/en` (or the current English canonical docs), not edited as an independent source.
+
+Practical rule of thumb:
+- **During iteration:** update English docs only.
+- **Before release:** perform one concentrated English -> Chinese sync.
+- **After release:** keep English as the upstream source for the next round.
