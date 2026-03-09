@@ -1,0 +1,28 @@
+{
+  "run_id": "run-20260310-0900",
+  "workflow_id": "wf-0001",
+  "status": "timed_out",
+  "current_stage": "analyst",
+  "started_at": "2026-03-10T09:00:00Z",
+  "last_progress_at": "2026-03-10T09:16:00Z",
+  "retry_count": 1,
+  "deadline": "2026-03-10T09:30:00Z",
+  "guard_status": {
+    "input": "passed",
+    "analysis": "failed_timeout",
+    "execution": "not_started"
+  },
+  "outputs": [
+    "artifacts/macro/2026-03-10.json"
+  ],
+  "anomalies": [
+    "Analyst did not return a decision-ready handoff within the allowed step delay."
+  ],
+  "need_escalation": true,
+  "fallback_action": "retry_then_escalate",
+  "orchestrator_decision": "suspend_daily_and_return_to_review",
+  "notes": [
+    "Builder artifact was valid, but analysis step exceeded max_step_delay_minutes.",
+    "Daily mode should not continue silently when the analyst stage stalls past the approved window."
+  ]
+}

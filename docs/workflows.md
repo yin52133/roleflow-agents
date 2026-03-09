@@ -200,3 +200,23 @@ fallback_policy:
 ```
 
 These fields do not guarantee success by themselves. They define how the orchestrator should react when a daily workflow slows down, fails validation, or drifts away from the approved path.
+
+
+## Failed run example
+
+A healthy example is not enough. A workflow design should also show what happens when a daily step fails or stalls.
+
+Example failure case:
+- Builder completed successfully
+- Analyst timed out during daily execution
+- Guard status changed to `failed_timeout`
+- Retry policy was attempted within the daily window
+- The orchestrator escalated and moved the workflow back toward review-heavy handling
+
+Suggested example runtime file:
+
+```text
+runtime/workflow-runs/wf-0001/history/2026-03-10T09-00-00-timeout.json
+```
+
+This makes failure handling visible instead of leaving it as an implied behavior.

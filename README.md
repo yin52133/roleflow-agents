@@ -167,7 +167,7 @@ roleflow-agents/
 
 `workflows/` stores durable workflow registry files used by the orchestrator. `0001-example.yaml` is a public example that shows a managed workflow object with daily expectations, guards, retry rules, and fallback policy.
 
-`runtime/workflow-runs/` stores fast-changing execution state and history. It is separate from approved workflow definitions.
+`runtime/workflow-runs/` stores fast-changing execution state and history. It is separate from approved workflow definitions, and can include both successful and failed example runs.
 
 `docs/` keeps the canonical English docs. `README.md` stays bilingual for easier review and onboarding.
 

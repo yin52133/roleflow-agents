@@ -256,3 +256,6 @@ A reliable daily workflow usually needs three separate mechanisms:
 - **escalation policy**: define when the orchestrator must intervene, suspend, reroute, or notify a human
 
 In RoleFlow Agents, the operator executes the run, while the orchestrator remains responsible for supervising stalled steps, retries, and fallback decisions.
+
+
+Failure handling should be visible in runtime examples, not only described in policy text. This helps distinguish a workflow system that merely defines happy paths from one that can survive stalled steps, retries, and escalations.
