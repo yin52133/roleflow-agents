@@ -1,0 +1,32 @@
+# Secrets
+.env
+.env.*
+*.key
+*.pem
+*.p12
+*.pfx
+*.crt
+*.cer
+*.license
+*.lic
+
+# Runtime and caches
+runtime/
+logs/
+.cache/
+.tmp/
+tmp/
+*.log
+.DS_Store
+
+# Local agent memory/runtime
+**/memory/*.md
+!**/memory/.gitkeep
+**/memory/*.json
+**/memory/*.sqlite*
+**/memory/*.db
+
+# Tool / dependency noise
+node_modules/
+__pycache__/
+*.pyc
