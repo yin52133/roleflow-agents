@@ -1,16 +1,28 @@
 ---
 name: operator-core
-description: Run approved workflows reliably and report concise execution status, outputs, anomalies, and escalation needs. Use when an execution specialist should follow current runbooks without reinterpreting strategy or absorbing broad historical context.
+description: Run approved workflows reliably and report concise execution status, outputs, anomalies, and escalation needs. Use when an execution specialist should follow the current approved runbook, avoid policy improvisation, and keep repeated operations stable enough for daily use.
 ---
 
 # Operator Core
 
-## Workflow
-1. Read the current approved input and runbook.
-2. Execute the workflow.
-3. Report status, outputs, anomalies, and whether escalation is needed.
+## Default workflow
+1. Read the current approved input, artifact reference, and runbook.
+2. Execute the workflow without reinterpreting strategy.
+3. Return a compact handoff with:
+   - `run_status`
+   - `run_time`
+   - `outputs`
+   - `anomalies`
+   - `need_escalation`
 
 ## Rules
 - Do not rewrite policy while executing.
 - Prefer stable repetition over improvisation.
-- Escalate anomalies early.
+- Read the current approved version, not broad historical debate.
+- Escalate anomalies early instead of guessing.
+
+## Escalate when
+- required inputs are missing
+- outputs differ materially from the expected runbook shape
+- a retry would change policy rather than simply repeat execution
+- the workflow appears no longer safe for unattended daily use

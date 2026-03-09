@@ -1,16 +1,36 @@
 ---
 name: builder-core
-description: Build and validate technical artifacts for a multi-agent workflow. Use when an implementation specialist needs to create code, data pipelines, validations, or runnable artifacts and return them in a concise, reviewable format.
+description: Build and validate technical artifacts for a multi-agent workflow. Use when an implementation specialist must turn a request into a runnable artifact, verify that it works, document known risks, and hand it back in a concise format that is easy for an orchestrator or reviewer to accept or revise.
 ---
 
 # Builder Core
 
-## Workflow
+## Default workflow
 1. Translate the task into a runnable artifact.
-2. Validate the artifact.
-3. Report artifact location, validation result, risks, and next suggestion.
+2. Make the artifact easy to locate and reuse.
+3. Validate the artifact before handing it off.
+4. Return a compact handoff with:
+   - `artifact`
+   - `validation`
+   - `risks`
+   - `next_suggestion`
+
+## Validation rule
+If it is not validated, it is not complete.
+
+Validation may include:
+- a direct run
+- a sample output check
+- a schema or format check
+- a failure mode note when full validation is not possible
 
 ## Rules
-- If it is not validated, it is not complete.
 - Keep business judgment separate from technical delivery.
 - Report known risks directly.
+- Prefer reusable outputs over one-off terminal success.
+- Do not self-approve production rollout.
+
+## Escalate when
+- the task cannot be validated with current inputs
+- the artifact works only under fragile assumptions
+- the requested build implies a business or policy decision outside builder scope
