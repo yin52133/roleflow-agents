@@ -98,6 +98,17 @@ orchestrator 主要保存：
 - **Builder**：开发与验证数据/代码产物，没跑通不算完成
 - **Operator**：按批准版本稳定执行 daily 流程，异常立即上报
 
+## Recommended transport pattern
+
+For production-grade execution, RoleFlow Agents usually works best with:
+
+- **frontstage orchestrator**
+- **backstage fixed specialists**
+- **shared user-facing surface as request/review/summary layer**
+- **independent agent/session transport for actual specialist work**
+
+In practice, that means the user mainly talks to the orchestrator, while Analyst / Builder / Operator may work in independent background sessions and return compact handoffs. This keeps the role structure real without forcing every specialist turn to appear in the same shared chat surface.
+
 ## 设计原则
 
 1. **专家只对 orchestrator 交付，不横向自由指挥**
@@ -105,6 +116,8 @@ orchestrator 主要保存：
 3. **产物可以引用，决策必须收口**
 4. **主 agent 只记状态，不记专家长文本细节**
 5. **SOUL 管角色，RULE 管边界，SKILL 管 workflow**
+6. **共享可见范围不等于共享默认解释权；默认解释权仍归 orchestrator**
+7. **shared chat surface 更适合做 request/review/summary，不一定要承担全部 agent-to-agent transport**
 
 ## 默认语言策略
 

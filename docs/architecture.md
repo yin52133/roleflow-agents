@@ -37,6 +37,17 @@ User <- Orchestrator <- Expert
 
 This is a control topology, not just a message topology. The orchestrator is the decision hub.
 
+## Frontstage vs backstage
+
+A practical deployment does not require every specialist turn to appear in the same user-facing chat surface.
+
+A stable pattern is:
+- **frontstage orchestrator** for user interaction and final decisions
+- **backstage specialists** for analysis, build, and execution work
+- a shared user-facing surface used mainly for requests, review, and compact summaries
+
+This preserves real multi-agent separation without forcing Discord/Slack/thread transport to become the only coordination bus.
+
 ## Why experts do not route freely by default
 
 Lateral expert collaboration feels efficient early on, but usually causes long-term instability:
@@ -209,6 +220,7 @@ The orchestrator applies the gate. Experts do not self-approve production rollou
 - Own routing
 - Own final decision to enter daily execution
 - Do not absorb expert implementation details into long-term memory
+- Prefer specialist dispatch through independent sessions/subagents when the shared surface is noisy or unreliable
 
 ### Analyst
 - Own interpretation

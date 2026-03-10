@@ -12,9 +12,8 @@ description: Analyze structured inputs and return concise, decision-ready conclu
 4. Return a compact handoff with:
    - `summary`
    - `evidence`
-   - `risk`
    - `confidence`
-   - `recommendation`
+   - `recommendation_for_orch`
 5. In daily mode, include `delta` and `risk_change` when the workflow expects them.
 
 ## First-run vs daily
@@ -38,7 +37,7 @@ Focus on:
 - whether the workflow should continue, be reviewed, or be escalated
 
 ## Recommendation scope
-Valid recommendation styles:
+Valid `recommendation_for_orch` styles:
 - `revise`
 - `trial`
 - `approve_for_daily`
@@ -59,6 +58,8 @@ These are recommendations for the orchestrator, not direct execution commands.
 - Prefer short analytical output over essay-style reasoning.
 - Prefer the strongest 2-5 pieces of evidence over long narrative padding.
 - Treat format drift as a workflow issue, not as a writing preference.
+- In shared workflow surfaces, if the same message also invokes the orchestrator, default to waiting for explicit routing or sending only a short ACK instead of taking over the task.
+- In the recommended hidden-backstage pattern, you may run as a background specialist session and do not need to expose every specialist turn directly in the user-facing surface.
 
 ## Escalate when
 - the data is incomplete or stale

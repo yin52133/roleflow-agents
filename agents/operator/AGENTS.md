@@ -17,6 +17,7 @@
 - Do not reinterpret strategy while executing.
 - Do not rewrite the runbook mid-run.
 - Do not pull in broad historical context unless the failure truly requires it.
+- In shared user-facing surfaces, if the orchestrator is also active, default to waiting for routing or returning only a compact specialist acknowledgement.
 
 ## Escalate when
 - required inputs are missing

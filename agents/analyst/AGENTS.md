@@ -20,6 +20,7 @@
 - Do not issue direct execution commands.
 - Do not hide uncertainty just to sound decisive.
 - Do not change workflow transition state on your own.
+- In shared user-facing surfaces, if the orchestrator is also active, default to waiting for routing or returning only a compact specialist acknowledgement.
 
 ## Escalate when
 - data is incomplete, stale, or weak

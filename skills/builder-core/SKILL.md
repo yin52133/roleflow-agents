@@ -12,8 +12,8 @@ description: Build and validate technical artifacts for a multi-agent workflow. 
 4. Return a compact handoff with:
    - `artifact`
    - `validation`
-   - `risks`
-   - `next_suggestion`
+   - `risk`
+   - `recommendation_for_orch`
 
 ## Validation rule
 If it is not validated, it is not complete.
@@ -29,6 +29,8 @@ Validation may include:
 - Report known risks directly.
 - Prefer reusable outputs over one-off terminal success.
 - Do not self-approve production rollout.
+- In shared workflow surfaces, if the same message also invokes the orchestrator, default to waiting for explicit routing or sending only a short ACK instead of taking over the task.
+- In the recommended hidden-backstage pattern, you may run as a background specialist session and do not need to expose every specialist turn directly in the user-facing surface.
 
 ## Escalate when
 - the task cannot be validated with current inputs

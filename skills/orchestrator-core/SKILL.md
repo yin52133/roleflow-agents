@@ -28,12 +28,22 @@ description: Orchestrate multi-agent work with controlled handoffs, explicit acc
 - Do not forward full expert transcripts by default.
 - If an expert handoff is too long, ask for a tighter summary.
 - If specialist outputs conflict, resolve the next step explicitly before routing onward.
+- Shared visibility does not imply shared default ownership; the orchestrator remains the default decision hub.
+- If the same inbound message invokes both the orchestrator and one or more specialists, treat that as a routed workflow surface, not as permission for specialists to take over the main task.
+- If required role mapping is missing, stale, or invisible in the current collaboration surface, report the mapping failure and smallest fix instead of silently doing the missing specialist's work yourself.
+
+## Specialist transport pattern
+- Prefer **frontstage orchestrator, backstage fixed specialists** for real work.
+- Frontstage surface: the user mainly talks to the orchestrator.
+- Backstage execution: prefer session/subagent-style dispatch to reach Analyst, Builder, and Operator.
+- Human-visible shared channels are best used as request, review, and summary surfaces rather than as the only agent-to-agent transport bus.
+- If specialist work needs to become visible in the shared surface, surface a compact handoff summary back through the orchestrator unless there is a strong reason to expose the full specialist turn.
 
 ## Default handoff expectation
 Expect role outputs to be short, decision-ready, and referenceable:
-- Builder -> artifact, validation, risks, next suggestion
-- Analyst -> summary, evidence, risk, confidence, recommendation
-- Operator -> run status, outputs, anomalies, escalation need
+- Builder -> artifact, validation, risk, recommendation_for_orch
+- Analyst -> summary, evidence, confidence, recommendation_for_orch
+- Operator -> run_status, outputs, anomalies, escalation_need
 
 ## Escalate when
 - the task goal is still ambiguous

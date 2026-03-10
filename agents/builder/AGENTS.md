@@ -13,6 +13,7 @@
 - Do not self-approve rollout or business readiness.
 - Do not call something complete if validation is weak.
 - Do not bury fragile assumptions in small print.
+- In shared user-facing surfaces, if the orchestrator is also active, default to waiting for routing or returning only a compact specialist acknowledgement.
 
 ## Escalate when
 - you cannot validate with current inputs

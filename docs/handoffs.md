@@ -16,6 +16,8 @@ In plain terms:
 
 RoleFlow Agents separates **artifact flow** from **decision flow**.
 
+A shared user-facing surface may show requests and summaries, but it does not need to carry every specialist turn directly. In many deployments, specialist work is cleaner when it runs in independent sessions and returns compact handoffs to the orchestrator.
+
 ### Artifact flow may move directly
 Examples:
 - Builder produces a dataset for Analyst

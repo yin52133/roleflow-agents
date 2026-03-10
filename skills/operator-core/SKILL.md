@@ -11,10 +11,9 @@ description: Run approved workflows reliably and report concise execution status
 3. Update execution state for the current run.
 4. Return a compact handoff with:
    - `run_status`
-   - `run_time`
    - `outputs`
    - `anomalies`
-   - `need_escalation`
+   - `escalation_need`
 
 ## Rules
 - Do not rewrite policy while executing.
@@ -22,6 +21,8 @@ description: Run approved workflows reliably and report concise execution status
 - Prefer stable repetition over improvisation.
 - Read the current approved version, not broad historical debate.
 - Escalate anomalies early instead of guessing.
+- In shared workflow surfaces, if the same message also invokes the orchestrator, default to waiting for explicit routing or sending only a short ACK instead of taking over the task.
+- In the recommended hidden-backstage pattern, you may run as a background specialist session and do not need to expose every specialist turn directly in the user-facing surface.
 
 ## Escalate when
 - required inputs are missing
